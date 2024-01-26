@@ -21,9 +21,6 @@ pipeline {
                     dir('nginx') {
                         docker.build('my-nginx:latest')
                     }
-
-                    // Deploy using docker-compose
-                    sh 'docker-compose up -d'
                 }
             }
         }
