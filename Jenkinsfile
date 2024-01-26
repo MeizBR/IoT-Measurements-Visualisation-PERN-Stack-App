@@ -1,9 +1,6 @@
 pipeline {
     agent {
-        docker {
-            image 'my-jenkins-agent:latest'
-            args '-v /var/run/docker.sock:/var/run/docker.sock'
-        }
+        label 'my-jenkins-agent'
     }
 
     stages {
