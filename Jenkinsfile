@@ -25,6 +25,8 @@ pipeline {
         stage('Client Tests') {
             steps {
                 dir('frontend') {
+                    // Install Node.js and npm (if not already installed)
+                    sh 'apt-get update && apt-get install -y nodejs npm'
                     sh 'npm install'
                     sh 'npm test'
                 }
@@ -35,6 +37,8 @@ pipeline {
         stage('Server Tests') {
             steps {
                 dir('backend') {
+                    // Install Node.js and npm (if not already installed)
+                    sh 'apt-get update && apt-get install -y nodejs npm'
                     sh 'npm install'
                     sh 'export PGHOST=$PGHOST'
                     sh 'export PGDATABASE=$PGDATABASE'
