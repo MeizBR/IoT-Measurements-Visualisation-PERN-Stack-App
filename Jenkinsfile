@@ -79,4 +79,13 @@ pipeline {
             }
         }
     }
+
+    post {
+        success {
+            echo 'PERN stack deployment successful!'
+        }
+        failure {
+            echo 'PERN stack deployment failed.'
+        }
+    }
 }
