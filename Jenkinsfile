@@ -1,5 +1,5 @@
 pipeline {
-    agent { label 'my-jenkins-agent-docker-compose' }
+    agent any
 
     stages {
         stage('Build and Deploy') {
