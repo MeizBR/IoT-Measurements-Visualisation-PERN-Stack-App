@@ -1,7 +1,5 @@
 pipeline {
-    agent {
-        label 'my-jenkins-agent'
-    }
+    agent any
 
     stages {
         stage('Build and Deploy') {
