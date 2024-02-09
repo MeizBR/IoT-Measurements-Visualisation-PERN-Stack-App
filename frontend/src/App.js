@@ -77,6 +77,7 @@ function App() {
   return (
     
     <MapContainer className='map-container' center={[35.8258 , 10.6412]} zoom={15}>
+      <h1>Welcome to My MERN App</h1>
 
       <TileLayer
           
