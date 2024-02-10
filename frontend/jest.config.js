@@ -1,10 +1,10 @@
+// jest.config.js
+
 module.exports = {
-    testEnvironment: 'jsdom',
-    transform: {
-      '^.+\\.jsx?$': 'babel-jest',
-    },
-    moduleNameMapper: {
-      '\\.(css|less|scss|sass)$': 'identity-obj-proxy',
-    },
-};
-  
+  type: 'module',  
+  transformIgnorePatterns: ['node_modules/(?!(axios)/)'],
+  transform: {
+    '^.+\\.(js|jsx|ts|tsx|mjs)$': 'babel-jest',
+  },
+  // ...the rest of your config
+}
