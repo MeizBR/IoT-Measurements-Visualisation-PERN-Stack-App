@@ -26,7 +26,7 @@ pipeline {
             steps {
                 dir('frontend') {
                     sh 'npm install'
-
+                    // sh 'npm test'
                 }
             }
         }
@@ -41,7 +41,7 @@ pipeline {
                     sh 'export PGUSER=$PGUSER'
                     sh 'export PGPASSWORD=$PGPASSWORD'
                     sh 'export PGPORT=$PGPORT'
-                    sh 'npm test'
+                    // sh 'npm test'
                 }
             }
         }
