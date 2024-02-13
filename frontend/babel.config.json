@@ -1,0 +1,8 @@
+// babel.config.json
+{
+  "presets": [
+    "@babel/preset-env",   // Include @babel/preset-env for ESNext to ES5 transpilation
+    "@babel/preset-react"  // Include @babel/preset-react for JSX support
+  ]
+}
+

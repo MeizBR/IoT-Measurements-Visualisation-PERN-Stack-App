@@ -4,9 +4,9 @@ import axios from 'axios';
 import { MapContainer, TileLayer, Marker, Tooltip } from 'react-leaflet';
 import L from 'leaflet';
 import"./App.css";
-import StickFigure from './components/StickFigure';
-import Legend from './components/Legend';
-import UpdateDuration from './components/UpdateDuration';
+import StickFigure from './components/StickFigure.js';
+import Legend from './components/Legend.js';
+import UpdateDuration from './components/UpdateDuration.js';
 import { io } from 'socket.io-client';
 
 const WS_URL = 'ws://localhost:5003';
@@ -77,7 +77,7 @@ function App() {
   return (
     
     <MapContainer className='map-container' center={[35.8258 , 10.6412]} zoom={15}>
-      <h1>Welcome to My MERN App</h1>
+
 
       <TileLayer
           
