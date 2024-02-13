@@ -52,17 +52,17 @@ pipeline {
                 script {
                     // Build React app
                     dir('frontend') {
-                        sh "docker build -t my-react-app:latest"
+                        sh "docker build -t my-react-app:latest ."
                     }
 
                     // Build Express.js app
                     dir('backend') {
-                        sh "docker build -t my-express-app:latest"
+                        sh "docker build -t my-express-app:latest ."
                     }
 
                     // Build nginx
                     dir('nginx') {
-                        sh "docker build -t my-nginx:latest"
+                        sh "docker build -t my-nginx:latest ."
                     }
                 }
             }
