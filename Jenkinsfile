@@ -53,17 +53,17 @@ pipeline {
                 script {
                     // Build React app
                     dir('frontend') {
-                        sh "docker build -t my-react-app:latest ."
+                        sh "docker build -t meiezbr/my-react-app:latest ."
                     }
 
                     // Build Express.js app
                     dir('backend') {
-                        sh "docker build -t my-express-app:latest ."
+                        sh "docker build -t meiezbr/my-express-app:latest ."
                     }
 
                     // Build nginx
                     dir('nginx') {
-                        sh "docker build -t my-nginx:latest ."
+                        sh "docker build -t meiezbr/my-nginx:latest ."
                     }
                 }
             }
@@ -74,8 +74,8 @@ pipeline {
             steps {
                 withCredentials([string(credentialsId: 'dockerhub', variable: 'DOCKER_HUB_PWD')]) {
                     sh 'docker login -u mayezbr9@gmail.com -p $DOCKER_HUB_PWD'
-                    sh 'docker push my-react-app:latest'
-                    sh 'docker push my-express-app:latest'
+                    sh 'docker push meiezbr/my-react-app:latest'
+                    sh 'docker push meiezbr/my-express-app:latest'
                 }
             }
         }
