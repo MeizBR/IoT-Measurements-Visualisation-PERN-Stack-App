@@ -10,6 +10,7 @@ pipeline {
         PGUSER = credentials('postgres-user')
         PGPASSWORD = credentials('postgres-password')
         PGPORT = 5432
+        DOCKER_HUB_PWD = credentials('dockerhub')
     }
 
     // This is the pipeline. It is a series of stages that Jenkins will run.
@@ -71,10 +72,8 @@ pipeline {
         // This stage is telling Jenkins to push the images to DockerHub.
         stage('Push Images to DockerHub') {
             steps {
-                echo "DOCKER_USERNAME: ${env.DOCKER_USERNAME}"
-                echo "DOCKER_PASSWORD: ${env.DOCKER_PASSWORD}"
-                withCredentials([usernamePassword(dockerhub: 'dockerhub', passwordVariable: 'DOCKER_PASSWORD', usernameVariable: 'DOCKER_USERNAME')]) {
-                    sh 'docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD'
+                withCredentials([string(credentialsId: 'dockerhub', variable: 'DOCKER_HUB_PWD')]) {
+                    sh 'docker login -u mayezbr9@gmail.com -p $DOCKER_HUB_PWD'
                     sh 'docker push my-react-app:latest'
                     sh 'docker push my-express-app:latest'
                 }
