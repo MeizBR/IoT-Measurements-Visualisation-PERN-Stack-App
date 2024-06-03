@@ -13,4 +13,6 @@ RUN npm install
 # Copy other files to my current directory
 COPY . .
 
+EXPOSE 3000
+
 CMD ["npm", "run", "start"]

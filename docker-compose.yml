@@ -1,36 +1,76 @@
 version: "3"
 services:
-  nginx:
-    depends_on:
-      - api
-      - client
-    restart: always
-    build:
-      dockerfile: Dockerfile
-      context: ./nginx
-    container_name: nginx_server
+
+  # postgres service
+  iotmvpostgresdb:
+    image: postgres
+    container_name: iotmvPostgresdbContainer
     ports:
-      - "3050:80"
-  api:
+      - "5432:5432"
+    volumes:
+      - iotmv_db_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: meiezbr
+      POSTGRES_PASSWORD: Imbus2013
+      POSTGRES_DB: iotmvdb
+    networks:
+      - iotmv
+
+  # # nginx service
+  # iotmvnginx:
+  #   build:
+  #     dockerfile: Dockerfile
+  #     context: ./nginx
+  #   container_name: iotmvNginxServer
+  #   ports:
+  #     - "3050:80"
+  #   depends_on:
+  #     - iotmvbackend
+  #     - iotmvfrontend
+  #   networks:
+  #     - iotmv
+  
+  # backend service
+  iotmvbackend:
     build:
       dockerfile: Dockerfile
       context: ./backend
-    container_name: backend_server
+    container_name: iotmvBackendServer
     volumes:
       - /app/node_modules
       - ./backend:/app
     ports:
       - "5000:5000"
-  client:
+    depends_on:
+      - iotmvpostgresdb
+    networks:
+      - iotmv
+
+  # frontend service
+  iotmvfrontend:
     stdin_open: true
     environment:
       - CHOKIDAR_USEPOLLING=true
     build:
       dockerfile: Dockerfile
       context: ./frontend
-    container_name: frontend_server
+    container_name: iotmvFrontendServer
     volumes:
       - /app/node_modules
       - ./frontend:/app
+    ports:
+      - "3000:3000"
     depends_on:
-      - api
+      - iotmvbackend
+    networks:
+      - iotmv
+
+# volumes
+volumes:
+  iotmv_db_data:
+
+# networks
+networks:
+  iotmv:
+    name: iotmv
+    driver: bridge

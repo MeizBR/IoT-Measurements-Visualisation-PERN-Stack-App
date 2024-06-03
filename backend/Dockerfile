@@ -13,5 +13,7 @@ RUN npm install
 # Copy other files to my current directory
 COPY . .
 
+EXPOSE 5000
+
 # Run express rum in the foreground
 CMD ["npm", "run", "dev"]
