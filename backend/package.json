@@ -23,5 +23,8 @@
   },
   "devDependencies": {
     "nodemon": "^3.0.3"
+  },
+  "publishConfig": {
+    "registry": "http://localhost:8081/repository/npm-internal/"
   }
 }

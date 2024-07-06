@@ -48,5 +48,8 @@
     "jest": "^27.5.1",
     "webpack": "^5.90.1",
     "webpack-cli": "^5.1.4"
+  },
+  "publishConfig": {
+    "registry": "http://localhost:8081/repository/npm-internal/"
   }
 }

@@ -18,12 +18,12 @@ npm-debug.log*
 /build
 
 # Ignore user-specific files
-.npmrc
-.npmignore
-.npm
-.yarn
-.yarnrc
-.yarnignore
+# .npmrc
+# .npmignore
+# .npm
+# .yarn
+# .yarnrc
+# .yarnignore
 
 # Ignore test coverage
 coverage/
